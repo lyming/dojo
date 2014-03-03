@@ -1,0 +1,123 @@
+<html>
+
+<head>
+
+    <title>circle</title>
+
+    <style type="text/css" >
+
+        .circle 
+
+        {  
+
+            border-radius:50%; 
+
+            background:#DDDDDD; 
+
+        }
+
+        .circle_inside 
+
+        { 
+
+            width:80%; 
+
+            height:80%;
+
+            left:10%; 
+
+            border-radius:50%; 
+
+            background:#494949;
+
+            position:relative;
+
+            top:10%;
+
+        }
+
+        #circle 
+
+        {
+
+            margin-left:50%;
+
+            position:relative;
+
+            left:-250px;
+
+            width:500px;
+
+            height:500px;
+
+        }
+
+    </style>
+
+    <script type="text/javascript" >
+
+        var c = 'DDDDDD,DFEFFF,494949,C8DB74,46DFDE,59DDDE'.split(',');
+
+        function create_color() {
+
+            var color = '',
+
+                c_length = c.length,
+
+                random_nmb = Math.floor(Math.random()*c_length);
+
+            return '#'+c[random_nmb];
+
+        }
+
+        function create_inside_circle(color, id) {
+
+            return "<div id='"+id+"' class='circle_inside' style='background:"+color+";'></div>";
+
+        }
+
+        function create_all_circle() {
+
+            var circle_nmb = 15,
+
+                html = [],
+
+                id = 0,
+
+                inside_circle = document.getElementById('circle');
+
+            for(var i=0; i<circle_nmb; i++) {
+
+                id = "circle"+i;
+
+                inside_circle.innerHTML = create_inside_circle(create_color(), id);
+
+                inside_circle = document.getElementById(id);
+
+            }
+
+        }  
+
+        window.onload = function(){
+
+            setInterval(function(){
+
+                create_all_circle();
+
+            }, 1500);
+
+        }  
+
+    </script>
+
+</head>
+
+<body>
+
+    <div class="circle bg1" id="circle">
+
+    </div>
+
+</body>
+
+</html>
